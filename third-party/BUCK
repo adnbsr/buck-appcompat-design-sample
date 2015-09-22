@@ -1,3 +1,25 @@
+import re
+
+maven('com.jakewharton.timber:timber:3.1.0')
+maven('org.mozilla:rhino:1.7R4')
+maven('org.jsoup:jsoup:1.8.1')
+maven('com.squareup.picasso:picasso:2.5.0')
+maven('com.squareup.retrofit:retrofit:1.9.0')
+maven('io.reactivex:rxandroid:0.24.0')
+maven('net.orange-box.storebox:storebox-lib:1.2.0')
+maven('com.jakewharton:butterknife:7.0.1')
+
+jars = []
+
+for jarfile in glob(['*.jar']):
+  name = 'jars__' + re.sub(r'^.*/([^/]+)\.jar$', r'\1', jarfile)
+  jars.append(':' + name)
+
+  prebuilt_jar(
+    name = name,
+    binary_jar = jarfile,
+  )
+
 android_prebuilt_aar(
   name = 'appcompat',
   aar = 'appcompat-v7-22.2.0.aar',
@@ -28,18 +50,19 @@ android_prebuilt_aar(
 
 
 android_library(
-    name = 'deps',
+    name = 'third-party',
     deps = [
       ':appcompat',
       ':design',
       ':support-v4',
     ],
+    exported_deps = jars,
     visibility = [
         'PUBLIC',
     ],
 )
 
 project_config(
-  src_target = ':deps',
+  src_target = ':third-party',
   src_roots = None,
 )

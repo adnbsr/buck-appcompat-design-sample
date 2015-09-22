@@ -5,3 +5,4 @@
 /.buckd
 local.properties
 .hgignore
+third-party/*.jar

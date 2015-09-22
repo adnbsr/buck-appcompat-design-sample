@@ -2,6 +2,7 @@ android_binary(
   name = 'app',
   manifest = 'AndroidManifest.xml',
   keystore = ':debug_keystore',
+  package_type = 'debug',
   deps = [
     '//java:java',
   ],
