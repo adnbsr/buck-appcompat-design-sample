@@ -1,0 +1,18 @@
+android_resource(
+  name = 'res',
+  res = 'res',
+  package = 'com.example.activity',
+  deps = [
+    '//third-party:appcompat',
+    '//third-party:design',
+    '//third-party:support-v4',
+  ],
+  visibility = [
+    '//java:java',
+  ],
+)
+
+project_config(
+  src_target = ':res',
+  src_roots = None,
+)

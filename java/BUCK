@@ -1,0 +1,15 @@
+android_library(
+  name = 'java',
+  srcs = glob(['**/*.java']),
+  deps = [
+    '//res:res',
+    '//third-party:appcompat',
+    '//third-party:design',
+    '//third-party:support-v4',
+  ],
+  visibility = [ 'PUBLIC' ],
+)
+
+project_config(
+  src_target = ':java',
+)

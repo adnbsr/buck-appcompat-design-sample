@@ -1,0 +1,7 @@
+*.iml
+.idea
+/buck-cache
+/buck-out
+/.buckd
+local.properties
+.hgignore

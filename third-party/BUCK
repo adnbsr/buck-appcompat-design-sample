@@ -1,0 +1,45 @@
+android_prebuilt_aar(
+  name = 'appcompat',
+  aar = 'appcompat-v7-22.2.0.aar',
+  visibility = [
+    'PUBLIC',
+  ],
+)
+
+android_prebuilt_aar(
+  name = 'design',
+  aar = 'design-22.2.0.aar',
+  deps = [
+    ':appcompat',
+    ':support-v4',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)
+
+android_prebuilt_aar(
+  name = 'support-v4',
+  aar = 'support-v4-22.2.0.aar',
+  visibility = [
+    'PUBLIC',
+  ],
+)
+
+
+android_library(
+    name = 'deps',
+    deps = [
+      ':appcompat',
+      ':design',
+      ':support-v4',
+    ],
+    visibility = [
+        'PUBLIC',
+    ],
+)
+
+project_config(
+  src_target = ':deps',
+  src_roots = None,
+)
